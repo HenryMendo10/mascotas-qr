@@ -107,6 +107,7 @@
                         doc.setFontSize(18);
                         doc.setTextColor(255, 255, 255);
                         doc.text(`Hola! Soy ${nombreMascota}`, 105, 180, { align: "center" });
+
                         // Imagen-2 con cualidades a los costados
                         doc.addImage(img2Data, 'JPEG', 85, 200, 40, 70);
                         const cualidadSpacing = 12;  // Ajuste de espacio entre cualidades
@@ -121,14 +122,12 @@
                         const pdfName = `${nombreMascota}_Info.pdf`;
                         doc.save(pdfName);
 
-                        // Crear un enlace temporal para el archivo PDF
-                        const url = URL.createObjectURL(new Blob([doc.output('blob')], { type: 'application/pdf' }));
-
-                        // Generar QR para el enlace del PDF
+                        // Generar QR para el PDF
+                        const url = "https://tu-servidor.com/" + pdfName; // Reemplaza esto con la URL donde estará disponible el PDF
                         const qrCanvas = document.getElementById('qr-canvas');
                         const qr = new QRious({
                             element: qrCanvas,
-                            value: url, // Genera QR a partir de la URL del PDF
+                            value: url,
                             size: 200
                         });
                     });
